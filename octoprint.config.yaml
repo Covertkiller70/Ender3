@@ -1,0 +1,57 @@
+accessControl:
+  salt: npfuCETjpN3ApSjnzpRU0oBv2wFXdGL9
+api:
+  key: 924BC70A4CC943149F2EE5CE56122C40
+plugins:
+  announcements:
+    _config_version: 1
+    channels:
+      _blog:
+        read_until: 1551867600
+      _important:
+        read_until: 1521111600
+      _octopi:
+        read_until: 1549966200
+      _plugins:
+        read_until: 1551657600
+      _releases:
+        read_until: 1544449800
+  cura:
+    cura_engine: /usr/local/bin/cura_engine
+  discovery:
+    publicPort: 80
+    upnpUuid: fb91354a-3c50-4ea0-8f41-a5c271f54dd1
+  softwareupdate:
+    _config_version: 6
+  tracking:
+    enabled: false
+printerProfiles:
+  default: _default
+server:
+  commands:
+    serverRestartCommand: sudo service octoprint restart
+    systemRestartCommand: sudo shutdown -r now
+    systemShutdownCommand: sudo shutdown -h now
+  firstRun: false
+  onlineCheck:
+    enabled: true
+  pluginBlacklist:
+    enabled: true
+  secretKey: AMrcyoMXdoGq9xXKHM1TQGwjyUXIYt7t
+  seenWizards:
+    corewizard: 3
+    cura: null
+    tracking: null
+webcam:
+  ffmpeg: /usr/bin/avconv
+  snapshot: http://192.168.1.16:8080/shot.jpg
+  stream: http://192.168.1.16:8080/video
+events:
+  enabled: True
+  subscriptions:
+    - event: PrintStarted
+    command: python3 /home/pi/relay-code/relayon.py
+    type: system
+    - event: PrintDone
+    command: python3 /home/pi/relay-code/relayoff.py
+    type: system
